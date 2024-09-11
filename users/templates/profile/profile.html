@@ -1,0 +1,37 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block add_to_head %}
+<link rel="stylesheet" href="{% static 'users/css/profile.css' %}">
+{% endblock add_to_head %}
+
+{% block content %}
+<div class="profile">
+    <div class="profile-header">
+        <img src="{{viewed_user.profile_image.url }}" class="profile-img">
+        <span class="profile-username">{{viewed_user.username}}</span>
+    </div>
+
+    {% if viewed_user.bio != "" %}
+        <span class="bio-header">Bio:</span>
+        {% if viewed_user.username == user.username %}
+            <form method="post" id="bio-form">
+                {% csrf_token %}
+                <div class="grow-wrap">
+                    <textarea form="bio-form" name="bio" class="bio-textarea" onInput="this.parentNode.dataset.replicatedValue = this.value">{{viewed_user.bio}}</textarea>
+                </div>
+                <button type="submit" class="btn btn-success">Save bio</button>
+            </form>
+        {% else %}
+            <div class="bio-content">{{viewed_user.bio}}</div>
+        {% endif %}
+    {% endif %}
+
+    {% if user.username == viewed_user.username %}
+        <div class="account-btns">
+            <a href="/logout" class="btn btn-danger">Logout</a>
+            <a href="/password_change" class="btn btn-primary">Change password</a>
+        </div>
+    {% endif %}
+</div>
+{% endblock content %}

@@ -1,0 +1,16 @@
+.footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.footer a {
+    width: 20px;
+    height: 20px;
+    padding: 10px;
+    border: rgb(38, 38, 38) solid 1px;
+    border-radius: 3px;
+    font-size: large;
+    font-weight: bold;
+    text-align: center;
+}

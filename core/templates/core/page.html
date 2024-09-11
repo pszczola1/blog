@@ -1,0 +1,32 @@
+{% extends 'core/base.html' %}
+{% block title %}Cat and programming blog{% endblock title %}
+
+{% block content %}
+
+<div class="flex-container">
+    {% for post in posts %}
+    <a href="/post/{{post.slug_title}}">
+    <div class="flex-item">
+        <img src="{{post.main_image.url}}" class="post-image" loading="lazy">
+        <div class="item-content">
+            <span class="title">{{post.title}}</span>
+            {% comment %} <span class="title">{{post.content|slice:":50"}}</span> {% endcomment %}
+            <div class="data">
+                <span class="author">Author: {{post.author.username}}</span>
+                <span class="date">Date: {{post.created_on}}</span>
+            </div>
+        </div>
+    </div>
+    </a>
+    {% endfor %}
+</div>
+
+{% endblock content %}
+
+{% block footer %}
+<div class="footer">
+    <a href="/page/{{page|add:"-1"}}"> < </a>
+        <a href="/page/{{page}}">{{page}}</a>
+    <a href="/page/{{page|add:"1"}}"> > </a>
+</div>
+{% endblock footer %}
