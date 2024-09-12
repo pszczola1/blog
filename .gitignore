@@ -1,4 +1,7 @@
 db.sqlite3
-media/
+media/post_images/*
+media/profile_images/*
+!media/post_images/.gitkeep
+!media/profile_images/.gitkeep
 *.pyc
 .vscode
